@@ -11,7 +11,23 @@ source $HOME/.zplug/init.zsh
 zplug "themes/robbyrussell", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "popstas/zsh-command-time"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "zsh-users/zsh-completions",              defer:0
+
+zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+
+# fzf
+zplug 'junegunn/fzf', \
+      as:command, \
+      use:'bin/{fzf,fzf-tmux}', \
+      if:"[[ $OSTYPE == linux* || $OSTYPE == darwin* ]]", \
+      hook-build:'./install --key-bindings --completion --no-update-rc'
+zplug "junegunn/fzf", from:github, use:"shell/completion.zsh"
+zplug "junegunn/fzf", from:github, use:"shell/key-bindings.zsh"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -23,14 +39,12 @@ fi
 
 zplug load
 
-# TODO, move to a different file
-alias gg="git grep"
-
 function clear-ls() {
   clear
   ls
   zle && zle .reset-prompt && zle -R
 }
+
 zle -N clear-ls
 bindkey '^k' clear-ls
 
