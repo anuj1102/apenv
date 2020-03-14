@@ -1,16 +1,15 @@
-# Installs enviornment from scratch
+#!/usr/bin/env bash
 
-# Initialize submodules (e.g. dotbot)
-git submodule update --init --recursive
+set -e
 
-# Link dotfiles
-./install_dotbot.sh
+CONFIG="install.conf.yaml"
+DOTBOT_DIR="dotbot"
 
-# Install zsh plugins
-/bin/zsh ~/.zshrc
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Change default shell to zsh
-echo "Change default shell to zsh"
-chsh -s /bin/zsh
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
 
-
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
