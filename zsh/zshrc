@@ -22,3 +22,15 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+# TODO, move to a different file
+alias gg="git grep"
+
+function clear-ls() {
+  clear
+  ls
+  zle && zle .reset-prompt && zle -R
+}
+zle -N clear-ls
+bindkey '^k' clear-ls
+
