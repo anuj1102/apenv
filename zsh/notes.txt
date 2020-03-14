@@ -1,0 +1,3 @@
+Rerequires this dependency:
+sudo apt install gawk
+Per https://github.com/zplug/zplug/issues/506
