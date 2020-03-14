@@ -1,1 +1,24 @@
-export ZPLUG_HOME=~/apenv/zsh/zplug
+export ZPLUG_HOME=$HOME/.zplug
+
+# Check if zplug is installed
+if [[ ! -d $ZPLUG_HOME ]]; then
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  source $ZPLUG_HOME/init.zsh && zplug update --self
+fi
+
+source $HOME/.zplug/init.zsh
+
+zplug "themes/robbyrussell", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "popstas/zsh-command-time"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+    echo
+fi
+
+zplug load
