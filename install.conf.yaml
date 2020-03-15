@@ -19,6 +19,7 @@
   - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
   - mv nvim-macos.tar.gz neovim/binaries/
   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
+  - ./neovim/install_binaries.sh
 
 - link:
    ~/.zshrc: zsh/zshrc
