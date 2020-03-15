@@ -25,6 +25,12 @@ zplug "neovim/neovim", \
                    cp neovim nvim/bin/nvim && \
                    ln -s ~/.zplug/repos/neovim/neovim/nvim/bin/nvim ~/.zplug/bin/nvim'
 
+# Abduco session manager, forked at anuj1102 since doesn't seemed to be
+# maintained anymore
+zplug "martanne/abduco", \
+       from:github, as:command, \
+       hook-build:'./configure --prefix=~/.zplug && make && make install'
+
 # P10k command line
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 zplug romkatv/powerlevel10k, as:theme, depth:1
