@@ -9,6 +9,9 @@
  echo "Remove abduco"
  rm -rf ~/.local/bin/abduco
 
+ echo "Remove nvr"
+ rm -rf ~/.local/bin/nvr
+
  echo "Rerunning install script to see if all programs are installed"
  sleep 1
  ./install.sh
@@ -21,3 +24,4 @@ function check_dep() {
 check_dep zsh
 check_dep abduco
 check_dep nvim
+check_dep nvr
