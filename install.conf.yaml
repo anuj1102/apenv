@@ -9,7 +9,6 @@
     - ~/.local/bin
     - ~/.config/nvim
 
-
 - link:
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
@@ -17,7 +16,11 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - cd abduco && ./configure --prefix=~/.local && make && make install
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
-  - [cd abduco && ./configure --prefix=~/.local &&
-     make && make install, Installing abduco session manager]
-  - [nvim +PlugInstall +qall, Installing neovim plugins]
+
+- link:
+   ~/.local/bin/nvim: ~/.zplug/repos/neovim/neovim/neovim
+
+   # - shell:
+        #  - [nvim +PlugInstall +qall, Installing neovim plugins]
