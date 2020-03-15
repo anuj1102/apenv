@@ -5,9 +5,9 @@
       stdout: true
       stdin: true
      
-
 - link:
    ~/.zshrc: zsh/zshrc
+   ~/.p10k.zsh: zsh/p10k.zsh
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

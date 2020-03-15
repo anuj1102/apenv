@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZPLUG_HOME=$HOME/.zplug
 
 # Check if zplug is installed
@@ -8,16 +15,19 @@ fi
 
 source $HOME/.zplug/init.zsh
 
-zplug "themes/robbyrussell", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "popstas/zsh-command-time"
+# P10k command line
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+zplug romkatv/powerlevel10k, as:theme, depth:1
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-zplug "zsh-users/zsh-completions",              defer:0
-
+# Autosuggest plugin
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+zplug "plugins/git", from:oh-my-zsh
+zplug "popstas/zsh-command-time"
+zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
 
 # fzf
@@ -39,6 +49,8 @@ fi
 
 zplug load
 
+# Personal aliases
+# cmd-k to clear screen
 function clear-ls() {
   clear
   ls
