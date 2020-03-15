@@ -1,18 +1,20 @@
 #!/bin/bash
 
-Add the following to install.yaml.conf
-- shell:
-  - rm -rf neovim/binaries
-  - mkdir neovim/binaries
-  - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
-     Installing neovim binaries, update links as new releases come out]
-  - chmod u+x nvim.appimage
-  - mv nvim.appimage neovim/binaries/
-  - cd neovim/binaries && ./nvim.appimage --appimage-extract
-  - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
-  - mv nvim-macos.tar.gz neovim/binaries/
-  - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
-  - ./neovim/install_binaries.sh
+# Manual installation of neovim if zplug stops working
+#
+# Add the following to install.yaml.conf
+# - shell:
+#   - rm -rf neovim/binaries
+#   - mkdir neovim/binaries
+#   - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
+#      Installing neovim binaries, update links as new releases come out]
+#   - chmod u+x nvim.appimage
+#   - mv nvim.appimage neovim/binaries/
+#   - cd neovim/binaries && ./nvim.appimage --appimage-extract
+#   - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
+#   - mv nvim-macos.tar.gz neovim/binaries/
+#   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
+#   - ./neovim/install_binaries.sh
 
 # Downlaod neovim from https://github.com/neovim/neovim/releases
 
