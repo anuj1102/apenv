@@ -1,3 +1,6 @@
-Rerequires this dependency on Ubuntu 18.04:
+- Rerequires this dependency on Ubuntu 18.04:
 sudo apt install gawk
 Per https://github.com/zplug/zplug/issues/506
+
+- P10k requires Meslo font found here:
+https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
