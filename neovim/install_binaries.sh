@@ -23,4 +23,4 @@ echo "Using binary: $BINARY"
 # Install nvim binary symlink in local bin
 mkdir -p $LOCAL_PROG_PATH
 rm -rf $LOCAL_NVIM_PATH
-ln -s $HOME/setupenv/neovim/$BINARY $LOCAL_NVIM_PATH
+ln -s $PWD/$BINARY $LOCAL_NVIM_PATH
