@@ -29,6 +29,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "popstas/zsh-command-time"
 zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+zplug "MichaelAquilina/zsh-you-should-use"
 
 # fzf
 zplug 'junegunn/fzf', \
@@ -39,13 +40,6 @@ zplug 'junegunn/fzf', \
 zplug "junegunn/fzf", from:github, use:"shell/completion.zsh"
 zplug "junegunn/fzf", from:github, use:"shell/key-bindings.zsh"
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-    echo
-fi
 
 zplug load
 
