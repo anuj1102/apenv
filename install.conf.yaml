@@ -17,5 +17,6 @@
   - [command -v zsh, Checking dependencies were installed using host package manager]
   - command -v pip3
   - command -v curl
+  - [pip3 install --user neovim-remote, Install neovim-remote]
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
   - [nvim +PlugInstall +qall, Installing neovim plugins]
