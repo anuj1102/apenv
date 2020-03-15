@@ -12,4 +12,3 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
-  - [sudo chsh -s /bin/zsh, Making zsh the default shell]
