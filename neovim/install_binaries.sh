@@ -23,4 +23,5 @@ echo "Using binary: $BINARY"
 # Install nvim binary symlink in local bin
 mkdir -p $LOCAL_PROG_PATH
 rm -rf $LOCAL_NVIM_PATH
-ln -s $PWD/$BINARY $LOCAL_NVIM_PATH
+ABS_PATH=$(dirname $(readlink -f $0))
+ln -s $ABS_PATH/$BINARY $LOCAL_NVIM_PATH
