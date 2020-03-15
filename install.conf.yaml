@@ -18,9 +18,4 @@
   - [git submodule update --init --recursive, Installing submodules]
   - cd abduco && ./configure --prefix=~/.local && make && make install
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
-
-- link:
-   ~/.local/bin/nvim: ~/.zplug/repos/neovim/neovim/neovim
-
-   # - shell:
-        #  - [nvim +PlugInstall +qall, Installing neovim plugins]
+  - [nvim +PlugInstall +qall, Installing neovim plugins]
