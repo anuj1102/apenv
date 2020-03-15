@@ -12,3 +12,5 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
+  - [cd abduco && ./configure --prefix=~/.local &&
+     make && make install, Installing abduco session manager]

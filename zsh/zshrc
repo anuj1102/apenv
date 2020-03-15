@@ -40,10 +40,15 @@ zplug 'junegunn/fzf', \
 zplug "junegunn/fzf", from:github, use:"shell/completion.zsh"
 zplug "junegunn/fzf", from:github, use:"shell/key-bindings.zsh"
 
+# Enhanced cd
+zplug "b4b4r07/enhancd", use:init.sh
+
 
 zplug load
 
 # Personal aliases
+alias ls="ls --color=tty"
+
 # cmd-k to clear screen
 function clear-ls() {
   clear
