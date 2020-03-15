@@ -6,7 +6,6 @@
       stdin: true
 
 - create:
-    - ~/.local/bin
     - ~/.config/nvim
 
 - link:
@@ -15,7 +14,5 @@
    ~/.config/nvim/init.vim: neovim/init.vim
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - cd abduco && ./configure --prefix=~/.local && make && make install
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
   - [nvim +PlugInstall +qall, Installing neovim plugins]
