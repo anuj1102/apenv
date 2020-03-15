@@ -49,8 +49,42 @@ zplug "b4b4r07/enhancd", use:init.sh
 
 zplug load
 
-# Personal aliases
+################ Personal aliases ###################################3
+# https://github.com/mhinz/neovim-remote
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  export VISUAL="nvr"
+else
+  export VISUAL="nvim"
+fi
+alias vi="$VISUAL"
+
+# Create new editing sessions easily
+function nmux() {
+    abduco -A $1 nvim -c :terminal
+}
+
+# https://superuser.com/questions/458906/zsh-tab-completion-of-git-commands-is-very-slow-how-can-i-turn-it-off
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
+# Local aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
+# Reconnect ssh-agent
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+
 alias ls="ls --color=tty"
+alias gg="git grep"
 
 # cmd-k to clear screen
 function clear-ls() {
@@ -62,3 +96,5 @@ function clear-ls() {
 zle -N clear-ls
 bindkey '^k' clear-ls
 
+# Added by fzf vim plugin
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

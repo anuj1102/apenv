@@ -32,3 +32,4 @@
   - [/bin/zsh ~/.zshrc, Installing zsh plugins]
   - [cd abduco && ./configure --prefix=~/.local &&
      make && make install, Installing abduco session manager]
+  - [nvim +PlugInstall +qall, Installing neovim plugins]
