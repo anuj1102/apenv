@@ -29,7 +29,10 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "popstas/zsh-command-time"
 zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+
+# Better cd
 zplug "MichaelAquilina/zsh-you-should-use"
+export ENHANCD_DISABLE_DOT=1
 
 # fzf
 zplug 'junegunn/fzf', \
