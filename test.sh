@@ -1,7 +1,7 @@
 #!/bin/bash
 
  echo "Remove zplug and zsh"
- rm -rf ~/.zplug ~/.zshrc
+ rm -rf ~/.zplug ~/.zshrc ~/.p10k.zsh
 
  echo "Remove neovim"
  rm -rf ~/.config/nvim/init.vim ~/.local/share/nvim ~/.local/bin/nvim
