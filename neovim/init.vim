@@ -28,11 +28,7 @@ Plug 'brettanomyces/nvim-terminus'
 
 " Coding tools
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
-Plug 'fishbullet/deoplete-ruby'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'mtahmed/click.vim'
@@ -43,13 +39,17 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Intellisense
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neosnippet.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+
+" Plug 'vim-syntastic/syntastic'
+" Plug 'w0rp/ale'
+" Plug 'fishbullet/deoplete-ruby'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 call plug#end()
 
@@ -158,7 +158,7 @@ endfunction
 
 " Local neovim configs
 call SourceIfExists("~/.config/nvim/local.vim")
-
+call SourceIfExists("~/.config/nvim/coc.vim")
 
 " --------------------mhartington/oceanic-next(Theme) ------------------------
 " For Neovim 0.1.3 and 0.1.4
@@ -222,46 +222,6 @@ let g:fzf_layout = { 'up': '~40%' }
 nmap <Leader>o :GFiles<CR>/
 nmap <Leader>f :RG<CR>
 
-"Ale
-let g:airline#extensions#ale#enabled = 1
-"Necessary to parse compile commands
-let g:ale_c_parse_compile_commands = 1
-
-"deoplete
-let g:deoplete#enable_at_startup = 1
-
-
-" https://github.com/cquery-project/cquery/wiki/Neovim
-" c++ language server
-let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['cquery', '~/.log/cquery/cq.log'],
-    \ 'c': ['cquery', '~/.log/cquery/cq.log'],
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'ruby': ['tcp://localhost:7658'],
-    \ }
-
-let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
-set completefunc=LanguageClient#complete
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
-
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <silent> gS :call LanguageClient_workspace_symbol({'query':input('workspace/symbol ')})<cr>
-
-nnoremap <silent> gR :call LanguageClient#textDocument_rename()<CR>
-augroup LanguageClient_config
-  au!
-  au BufEnter * let b:Plugin_LanguageClient_started = 0
-  au User LanguageClientStarted setl signcolumn=yes
-  au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
-  au User LanguageClientStopped setl signcolumn=auto
-  au User LanguageClientStopped let b:Plugin_LanguageClient_stopped = 0
-  au CursorMoved * if b:Plugin_LanguageClient_started | call LanguageClient_textDocument_hover() | endif
-augroup END
-
 " Rspec
 let test#strategy = "neoterm"
 let test#ruby#rspec#options = "-fd"
@@ -270,27 +230,4 @@ nnoremap <Leader>r :TestNearest<CR>
 
 " Neoterm run last command, https://github.com/kassio/neoterm/issues/210
 nnoremap <silent> <leader>c :<c-u>exec printf("%sTexec !! \<lt>cr>", v:count)<cr>
-
-"Neosnippet
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <S-Tab>  <Plug>(neosnippet_expand_or_jump)
-smap <S-Tab>  <Plug>(neosnippet_expand_or_jump)
-xmap <S-Tab>  <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-let g:deoplete#auto_complete_delay = 0
-let g:auto_refresh_delay = 0
+"******************************************************************************

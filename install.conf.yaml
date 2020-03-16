@@ -12,11 +12,14 @@
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
    ~/.config/nvim/init.vim: neovim/init.vim
+   ~/.config/nvim/coc.vim: neovim/coc.vim
 
 - shell:
   - [command -v zsh, Checking dependencies were installed using host package manager]
   - command -v pip3
   - command -v curl
+  - command -v node
+  - command -v yarn
     # Neovim binaries
   - rm -rf neovim/binaries
   - mkdir neovim/binaries
