@@ -39,6 +39,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Intellisense
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'vim-syntastic/syntastic'
 " Plug 'w0rp/ale'

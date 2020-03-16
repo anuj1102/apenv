@@ -1,0 +1,2 @@
+#!/bin/sh
+BUNDLE_GEMFILE=~/apenv/neovim/ruby/Gemfile bundle exec solargraph
