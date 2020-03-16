@@ -237,6 +237,7 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['cquery', '~/.log/cquery/cq.log'],
     \ 'c': ['cquery', '~/.log/cquery/cq.log'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'ruby': ['tcp://localhost:7658'],
     \ }
 
 let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
