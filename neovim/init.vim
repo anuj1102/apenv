@@ -194,25 +194,33 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 "
 
 " ---------------------------- junegunn/fzf ----------------------------------
-let g:fzf_layout = { 'up': '~40%' }
-nmap <Leader>o :GFiles<CR>/
-nmap <Leader>f :GGrep<CR>
-
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
-command! -bang -nargs=* Rg
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+command! -bang -nargs=* OldRg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:40%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-" Search in current dir
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+let g:fzf_layout = { 'up': '~40%' }
+nmap <Leader>o :GFiles<CR>/
+nmap <Leader>f :RG<CR>
 
 "Ale
 let g:airline#extensions#ale#enabled = 1
