@@ -126,3 +126,5 @@ function clear-ls() {
 
 zle -N clear-ls
 bindkey '^k' clear-ls
+bindkey "^A" vi-beginning-of-line
+bindkey "^E" vi-end-of-line
