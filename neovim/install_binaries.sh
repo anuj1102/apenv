@@ -16,6 +16,17 @@
 #   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
 #   - ./neovim/install_binaries.sh
 
+# Add the followign to zshrc to use zplug to install neovim
+# Install neovim from github releases
+# The current gh-r command deletes the nvim binary from bin/
+# and renames it to neovim in the top level repo dir
+# Add a post hook build that copies it back to get around this
+# zplug "neovim/neovim", \
+#        from:gh-r, as:command, \
+#        hook-build:'mv nvim-* nvim && \
+#                    cp neovim nvim/bin/nvim && \
+#                    ln -s ~/.zplug/repos/neovim/neovim/nvim/bin/nvim ~/.zplug/bin/nvim'
+
 # Downlaod neovim from https://github.com/neovim/neovim/releases
 
 LOCAL_PROG_PATH=$HOME/.local/bin
