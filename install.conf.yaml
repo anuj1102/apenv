@@ -18,7 +18,7 @@
    # ~/.p10k.zsh: zsh/p10k.zsh
    ~/.config/nvim/init.vim: neovim/init.vim
    ~/.config/nvim/coc.vim: neovim/coc.vim
-   ~/.config/nvim/coc-settings.json.vim: neovim/coc-settings.json
+   ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
 
 - shell:
   - [command -v zsh, Checking dependencies were installed using host package manager]
@@ -47,4 +47,5 @@
   # - [pip3 install --user neovim-remote, Install neovim-remote] Disable for now, this is complicated
   # - [/bin/zsh ~/.zshrc, Installing zsh plugins] Disable for now
   - [nvim +PlugInstall +qall, Installing neovim plugins]
+  - [nvim -c 'CocInstall -sync coc-json coc-html coc-solargraph|q', Install coc extensions]
 

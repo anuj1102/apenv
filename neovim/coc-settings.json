@@ -1,4 +1,5 @@
 {
+  "solargraph.commandPath": "/home/anujp/co/router/testbed/vendor/bundle/ruby/2.2.0/bin/solargraph",
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.hover": true,
