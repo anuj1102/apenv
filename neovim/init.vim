@@ -42,7 +42,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'vim-syntastic/syntastic'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Plug 'fishbullet/deoplete-ruby'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/neosnippet-snippets'
@@ -58,6 +58,17 @@ call plug#end()
 " --------------------------Basic Configuration-------------------------------
 "=============================================================================
 "
+" ------------------------ Local vim configs --------------------------------
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+  	exe 'source' a:file
+  endif
+endfunction
+
+" Local neovim configs
+call SourceIfExists("~/.config/nvim/local.vim")
+call SourceIfExists("~/.config/nvim/coc.vim")
+
 set mouse=a
 set tabstop=2
 set softtabstop=0 noexpandtab
@@ -150,22 +161,12 @@ nnor yf :let @"=expand("%:p")<CR>
 " Copy filename to clipboard
 nmap <Leader>P :let @" = expand("%:p")<CR>
 
-" ------------------------ Local vim configs --------------------------------
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-  	exe 'source' a:file
-  endif
-endfunction
-
-" Local neovim configs
-call SourceIfExists("~/.config/nvim/local.vim")
-call SourceIfExists("~/.config/nvim/coc.vim")
 
 " --------------------mhartington/oceanic-next(Theme) ------------------------
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Or if you have Neovim >= 0.1.5
+" Or if you have Neovim >= 0aj.1.5
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -185,6 +186,9 @@ let g:airline#extensions#tabline#show_splits = 1
  " enable/disable displaying buffers with a single tab
 let g:airline#extensions#tabline#show_buffers = 1
  " tab number
+let g:airline#extensions#tabline#show_tabs = 0 "Prefer showing buffers
+" Remove term:// from the default ignore list
+let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
