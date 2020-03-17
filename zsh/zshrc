@@ -26,10 +26,12 @@ zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-syntax-highlighting", defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "MichaelAquilina/zsh-you-should-use"
 
-# P10k command line
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-zplug romkatv/powerlevel10k, as:theme, depth:1
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Theme
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+autoload -U promptinit; promptinit
+PURE_CMD_MAX_EXEC_TIME=3
+zstyle :prompt:pure:path color white
 
 # Autosuggest plugin
 zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
