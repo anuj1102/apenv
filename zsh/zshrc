@@ -29,9 +29,8 @@ zplug "MichaelAquilina/zsh-you-should-use"
 # Theme
 zplug mafredri/zsh-async, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=3
-zstyle :prompt:pure:path color white
+zstyle ':prompt:pure:prompt:success' color cyan
 
 # Autosuggest plugin
 zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
