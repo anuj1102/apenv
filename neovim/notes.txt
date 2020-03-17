@@ -1,0 +1,5 @@
+Not sure how coc works just yet, see here
+
+vim -c 'CocInstall -sync coc-json coc-html|q'
+https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+
