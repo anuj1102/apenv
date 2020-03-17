@@ -2,5 +2,11 @@
 sudo apt install gawk
 Per https://github.com/zplug/zplug/issues/506
 
+- # Add this to zshrc to switchback to p10k
+-# P10k command line
+-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+-zplug romkatv/powerlevel10k, as:theme, depth:1
+-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 - P10k requires Meslo font found here:
 https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
