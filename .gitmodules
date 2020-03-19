@@ -8,3 +8,6 @@
 [submodule "ruby/solargraph"]
 	path = ruby/solargraph
 	url = https://github.com/castwide/solargraph
+[submodule "ruby/rbenv"]
+	path = ruby/rbenv
+	url = https://github.com/rbenv/rbenv
