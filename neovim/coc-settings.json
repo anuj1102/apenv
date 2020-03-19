@@ -1,10 +1,17 @@
 {
-  "solargraph.commandPath": "/home/anujp/co/router/testbed/vendor/bundle/ruby/2.2.0/bin/solargraph",
-  "solargraph.autoformat": true,
+  "coc.preferences.rootPatterns": [".solargraph.yml", ".git"],
+  "solargraph.useBundler": false,
+  "solargraph.completion": true,
   "solargraph.formatting": true,
+  "solargraph.diagnostics": true,
   "solargraph.hover": true,
   "solargraph.symbols": true,
   "solargraph.definitions": true,
   "solargraph.rename": true,
-  "solargraph.references": true
+  "solargraph.transport": "external",
+  "solargraph.logLevel": "info",
+  "solargraph.externalServer": {
+    "host": "localhost",
+    "port": 7658
+  }
 }

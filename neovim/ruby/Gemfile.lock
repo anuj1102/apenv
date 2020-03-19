@@ -2,13 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
-    backport (1.1.2)
-    benchmark (0.1.0)
-    e2mmap (0.1.0)
+    backport (0.3.0)
+    htmlentities (4.3.4)
     jaro_winkler (1.5.4)
-    maruku (0.7.3)
+    kramdown (1.17.0)
     mini_portile2 (2.4.0)
-    nokogiri (1.10.9)
+    mry (0.78.0.0)
+      rubocop (>= 0.41.0)
+    nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     parser (2.7.0.4)
@@ -16,40 +17,39 @@ GEM
     rainbow (3.0.0)
     reverse_markdown (1.4.0)
       nokogiri
-    rexml (3.2.4)
-    rubocop (0.80.1)
+    rubocop (0.68.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.7.0.1)
+      parser (>= 2.5, != 2.5.1.1)
       rainbow (>= 2.2.2, < 4.0)
-      rexml
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
+      unicode-display_width (>= 1.4.0, < 1.6)
     ruby-progressbar (1.10.1)
-    solargraph (0.38.5)
-      backport (~> 1.1)
-      benchmark
-      bundler (>= 1.17.2)
-      e2mmap
+    solargraph (0.31.3)
+      backport (~> 0.3)
+      htmlentities (~> 4.3, >= 4.3.4)
       jaro_winkler (~> 1.5)
-      maruku (~> 0.7, >= 0.7.3)
-      nokogiri (~> 1.9, >= 1.9.1)
+      kramdown (~> 1.16)
       parser (~> 2.3)
       reverse_markdown (~> 1.0, >= 1.0.5)
       rubocop (~> 0.52)
-      thor (~> 1.0)
+      thor (~> 0.19, >= 0.19.4)
       tilt (~> 2.0)
       yard (~> 0.9)
-    thor (1.0.1)
+    thor (0.20.3)
     tilt (2.0.10)
-    unicode-display_width (1.6.1)
+    unicode-display_width (1.5.0)
     yard (0.9.24)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  mry
   solargraph
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    2.1.4

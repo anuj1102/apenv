@@ -3,3 +3,11 @@ Not sure how coc works just yet, see here
 vim -c 'CocInstall -sync coc-json coc-html|q'
 https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 
+Use coc for ruby
+install latest solargraph using rbenv shim
+
+run with
+rbenv shell 2.5.1
+solograph socket
+
+configure coc settings to use external file

@@ -1,0 +1,130 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  DisabledByDefault: true
+  Exclude:
+    - 'testbed_ms/ms_python/**/*' # never remove, no stylecheck needed (python code)
+    - 'testbed_shared/ansible/**/*' # never remove, no stylecheck needed
+    - 'testbed_shared/bigtest/**/*' # never remove, no stylecheck needed (bigtest core code)
+    - 'testbed_shared/models/**/*' # never remove, no stylecheck needed (TODO: deprecate)
+    - 'vendor/**/*' # never remove, no stylecheck needed (3rd party libraries)
+    - 'testbed_shared/lib/ixia/pi_hlapi/**/*' # never remove, no stylecheck needed
+    - 'testbed_mr/scripts/**/*' # remove MR dev scripts
+    - 'testbed_shared/lib/ms/gems/psa_api/**/*' # never remove, no stylecheck needed
+    - 'testbed_mc/e2e/lib/ruby_expect/**/*' # third party source: github.com/abates/ruby_expect
+    - 'testbed_mv/tests/component/lib/**/*' # external repos for component testing
+    - 'testbed_mv/mv-test-videos/**/*' # external repos for component testing
+
+######################################################
+###########       Cop Departments        #############
+###   https://rubocop.readthedocs.io/en/latest/    ###
+######################################################
+Style:
+  Enabled: true
+Security:
+  Enabled: true
+Bundler:
+  Enabled: true
+Gemspec:
+  Enabled: true
+Layout:
+  Enabled: true
+Naming:
+  Enabled: true
+Lint:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+
+
+# Mine
+######################################################
+###########        Individual Cops        ############
+######################################################
+
+##################
+### Style Cops ###
+##################
+# BigTest requirement
+Style/GlobalVars:
+  Enabled: false
+# BigTest requirement
+Style/ClassVars:
+  Enabled: false
+# we have a lot of inherited BigTest classes that don't need this
+Style/Documentation:
+  Enabled: false
+# this was disabled by default anyway: https://github.com/bbatsov/rubocop/issues/3725
+Style/SingleLineBlockParams:
+  Enabled: false
+# nothing wrong with being explicit
+Style/RedundantReturn:
+  Enabled: false
+# nothing wrong with being explicit
+Style/RedundantBegin:
+  Enabled: false
+# Git Rubocop issue #4942
+Style/FormatStringToken:
+  Enabled: false
+# we don't use these often, and we would have to pull in large external dependencies to make it work (or go to ruby2.3)
+Style/WordArray:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+  EnforcedStyleForMultiline: consistent_comma
+Style/NumericPredicate:
+  Enabled: false
+Style/SafeNavigation:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/FloatDivision:
+  Enabled: false
+Style/MixinUsage:
+  Enabled: false
+
+
+###################
+### Naming Cops ###
+###################
+Naming/MethodName:
+  EnforcedStyle: snake_case
+Naming/VariableName:
+  EnforcedStyle: snake_case
+Naming/AccessorMethodName:
+  Enabled: false
+Naming/PredicateName:
+  Enabled: false
+
+####################
+### Linting Cops ###
+####################
+Lint/UselessAssignment:
+  Enabled: true
+  Exclude: # TODO: Some violations cleared, some still present
+    - 'testbed_mr/**/*'
+    - 'testbed_shared/lib/mr/**/*'
+    - 'testbed_ms/tests/poe/**/*'
+Lint/Debugger:
+  Enabled: true
+  Exclude:
+    - 'testbed_mc/scripts/interactive_phones.rb'
+    - 'testbed_mv/Thorfile'
+Lint/UnusedMethodArgument:
+  Enabled: true
+  Exclude:
+    - 'testbed_mv/lib/file_collector.rb'
+Layout/LineLength:
+  # This will disable the rule completely, regardless what other options you put
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+

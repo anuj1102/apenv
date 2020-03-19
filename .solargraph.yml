@@ -1,0 +1,17 @@
+---
+include:
+- "/home/anujp/co/router/testbed/**/*.rb"
+exclude:
+- spec/**/*
+- test/**/*
+- vendor/**/*
+- ".bundle/**/*"
+require: []
+domains: []
+reporters:
+- rubocop
+- require_not_found
+require_paths:
+- "/home/anujp/co/router/testbed"
+
+max_files: 5000

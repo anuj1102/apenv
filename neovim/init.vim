@@ -41,7 +41,7 @@ Plug 'junegunn/fzf.vim'
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 " Plug 'fishbullet/deoplete-ruby'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -192,6 +192,10 @@ let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|sta
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+"ale
+let g:airline#extensions#ale#enabled = 1
+" let g:ale_ruby_rubocop_executable = 'bundle'
 
 "=============================================================================
 " -------------------------- Advanced Configuration---------------------------
