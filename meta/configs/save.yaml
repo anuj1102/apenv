@@ -1,0 +1,4 @@
+- shell:
+  - [mkdir saved || exit 1, "Move saved dir before rerunning"]
+  - [mv ~/.config/nvim/init.vim saved/init.vim, "Save previous vim config to previous_init.vim"]
+  - [mv ~/.local/share/nvim saved/, "Save previous plugins and plugins_plugins_nvim"]
