@@ -1,0 +1,6 @@
+- shell:
+  - command: rm -rf ~/.config/nvim
+                  ~/.local/share/nvim
+                  ~/.local/bin/nvim
+    stdout: true
+    description: Remove neovim related files

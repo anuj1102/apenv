@@ -1,5 +1,9 @@
 # Neovim binaries installed from github
 #
+- create:
+    - ~/.config/nvim
+    - ~/.local
+
 - shell:
   - rm -rf neovim/binaries
   - mkdir neovim/binaries
@@ -12,13 +16,10 @@
   - mv nvim-macos.tar.gz neovim/binaries/
   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
   - ./neovim/install_binaries.sh
-
-- create:
-    - ~/.config/nvim
+  - [nvim +PlugInstall +qall, Installing neovim plugins]
+  # - [nvim -c 'CocInstall -sync coc-json coc-html coc-solargraph|q', Install coc extensions]
 
 - link:
-   # ~/.zshrc: zsh/zshrc
-   # ~/.p10k.zsh: zsh/p10k.zsh
    ~/.config/nvim/init.vim: neovim/init.vim
    ~/.config/nvim/coc.vim: neovim/coc.vim
    ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
