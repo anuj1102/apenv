@@ -13,4 +13,6 @@
   - command -v curl
   - command -v node
   - command -v yarn
+  - command -v tmux
+  - command -v cmake
   - [command -v solargraph, Run './install-standalone rubyenv' if not found]

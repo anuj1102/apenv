@@ -1,0 +1,10 @@
+- shell:
+  - rm -rf c++/ccls
+  - sudo apt install llvm-7 clang-7 libclang-7-dev
+  - cd c++ && git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+  - cd c++/ccls && cmake -H. -BRelease
+  - cd c++/ccls && cmake --build Release
+
+- link:
+   ~/.local/bin/ccls: c++/ccls/Release/ccls
+

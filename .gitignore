@@ -2,3 +2,6 @@ neovim/binaries
 abduco
 neovim/ruby/vendor
 saved
+c++/ccls
+.ccls_cache
+foo*
