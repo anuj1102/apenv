@@ -4,14 +4,15 @@
     shell:
       stdout: true
       stdin: true
+      stderr: true
 
 - create:
     - ~/.config/nvim
 
-- shell:
-  - [mkdir saved || exit 1, "Move saved dir before rerunning"]
-  - [mv ~/.config/nvim/init.vim saved/init.vim, "Save previous vim config to previous_init.vim"]
-  - [mv ~/.local/share/nvim saved/, "Save previous plugins and plugins_plugins_nvim"]
+# - shell:
+#   - [mkdir saved || exit 1, "Move saved dir before rerunning"]
+#   - [mv ~/.config/nvim/init.vim saved/init.vim, "Save previous vim config to previous_init.vim"]
+#   - [mv ~/.local/share/nvim saved/, "Save previous plugins and plugins_plugins_nvim"]
 
 - link:
    # ~/.zshrc: zsh/zshrc
@@ -21,24 +22,38 @@
    ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
 
 - shell:
-  - [command -v zsh, Checking dependencies were installed using host package manager]
-  - command -v pip3
-  - command -v curl
-  - command -v node
-  - command -v yarn
-  - command -v solargraph
+  # Setup rbenv and ruby 2.5.1
+  # - [git submodule update --init --recursive, Installing submodules]
+  # - [cd ruby/rbenv && src/configure && make -C src, Install custom ruby env with ruby 2.5.1]
+  # - [rm -rf ruby/rbenv/plugins/ruby-build]
+  # - [git clone https://github.com/rbenv/ruby-build.git ruby/rbenv/plugins/ruby-build]
+  # - command: ruby/rbenv/bin/rbenv install 2.5.1
+  #   stdin: true
+  #   stdout: true
+  #   description: Install ruby 2.5.1
+    - rbenv shell 2.5.1
+
+
+
+# - shell:
+#   - [command -v zsh, Checking dependencies were installed using host package manager]
+#   - command -v pip3
+#   - command -v curl
+#   - command -v node
+#   - command -v yarn
+#   - command -v solargraph
     # Neovim binaries
-  - rm -rf neovim/binaries
-  - mkdir neovim/binaries
-  - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
-     Installing neovim binaries, update links as new releases come out]
-  - chmod u+x nvim.appimage
-  - mv nvim.appimage neovim/binaries/
-  - cd neovim/binaries && ./nvim.appimage --appimage-extract
-  - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
-  - mv nvim-macos.tar.gz neovim/binaries/
-  - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
-  - ./neovim/install_binaries.sh
+  # - rm -rf neovim/binaries
+  # - mkdir neovim/binaries
+  # - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
+  #    Installing neovim binaries, update links as new releases come out]
+  # - chmod u+x nvim.appimage
+  # - mv nvim.appimage neovim/binaries/
+  # - cd neovim/binaries && ./nvim.appimage --appimage-extract
+  # - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
+  # - mv nvim-macos.tar.gz neovim/binaries/
+  # - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
+  # - ./neovim/install_binaries.sh
     # Neovim remote
   # - [pip3 install --user neovim-remote, Install neovim-remote]
     # Zsh
@@ -46,6 +61,6 @@
     # Install vim plugins
   # - [pip3 install --user neovim-remote, Install neovim-remote] Disable for now, this is complicated
   # - [/bin/zsh ~/.zshrc, Installing zsh plugins] Disable for now
-  - [nvim +PlugInstall +qall, Installing neovim plugins]
-  - [nvim -c 'CocInstall -sync coc-json coc-html coc-solargraph|q', Install coc extensions]
+  # - [nvim +PlugInstall +qall, Installing neovim plugins]
+  # - [nvim -c 'CocInstall -sync coc-json coc-html coc-solargraph|q', Install coc extensions]
 
