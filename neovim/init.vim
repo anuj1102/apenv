@@ -24,7 +24,6 @@ Plug 'bling/vim-airline'
 Plug 'Raimondi/delimitMate'
 Plug 'mklabs/split-term.vim'
 Plug 'kassio/neoterm'
-Plug 'brettanomyces/nvim-terminus'
 
 " Coding tools
 Plug 'tpope/vim-fugitive'
@@ -121,6 +120,7 @@ nnoremap <Leader>q :call QuitBuffer()<CR>
 nmap <Leader>p :Buffers<CR>
 nnoremap <Leader>] :bnext<CR>
 nnoremap <Leader>[ :bprevious<CR>
+nnoremap <Leader>w :close<CR>
 
 "Tabs
 nnoremap <Leader>t :tabnew<CR>
@@ -147,9 +147,13 @@ au BufEnter,BufWinEnter,WinEnter term://* startinsert
 nnoremap <Leader>d :vsplit<CR>
 nnoremap <Leader>D :VTerm<CR>
 nnoremap <Leader>T :terminal<CR>
-nnoremap <Leader>w :close<CR>
-nnoremap <Leader>= :VTerm<cr>
-nnoremap <Leader>- :Term<cr>
+
+"Neoterm
+let g:neoterm_default_mod='vertical'
+nnoremap <silent> <leader>C :Tnew<CR>
+
+" Neoterm run last command, https://github.com/kassio/neoterm/issues/210
+nnoremap <silent> <leader>c :<c-u>exec printf("%sTexec !! \<lt>cr>", v:count)<cr>
 
 " SSH copy paste work around
 " Write the default yank register to a file so we can pull it locally
@@ -236,7 +240,4 @@ let test#strategy = "neoterm"
 let test#ruby#rspec#options = "-fd"
 let test#ruby#rspec#executable = 'bundle exec script/zeus test'
 nnoremap <Leader>r :TestNearest<CR>
-
-" Neoterm run last command, https://github.com/kassio/neoterm/issues/210
-nnoremap <silent> <leader>c :<c-u>exec printf("%sTexec !! \<lt>cr>", v:count)<cr>
 "******************************************************************************
