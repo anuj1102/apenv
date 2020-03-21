@@ -1,0 +1,7 @@
+- shell:
+  - command: rm -rf ~/.zplug
+                    ~/.zshrc
+                    ~/.p10k.zsh
+                    ~/.local/bin/abduco # managed by zplug
+    stdout: true
+    description: Remove zsh related files

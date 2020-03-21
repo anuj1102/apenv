@@ -1,0 +1,4 @@
+- shell:
+  - command: rm -rf ~/.local/bin/nvr
+    stdout: true
+    description: Remove neovim-remote files
