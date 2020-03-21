@@ -1,3 +1,11 @@
+- defaults:
+    link:
+      relink: true
+    shell:
+      stdout: true
+      stdin: true
+      stderr: true
+
 - shell:
   - [echo "", Checking dependencies exist, install using local package manager]
   - command -v zsh
@@ -6,4 +14,3 @@
   - command -v node
   - command -v yarn
   - [command -v solargraph, Run './install-standalone rubyenv' if not found]
-  - [command -v foo, Run './install-standalone foo' if not found]

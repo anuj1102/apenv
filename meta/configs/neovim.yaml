@@ -13,6 +13,9 @@
   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
   - ./neovim/install_binaries.sh
 
+- create:
+    - ~/.config/nvim
+
 - link:
    # ~/.zshrc: zsh/zshrc
    # ~/.p10k.zsh: zsh/p10k.zsh
