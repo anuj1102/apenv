@@ -6,7 +6,7 @@
 
 - shell:
   - rm -rf neovim/binaries
-  - mkdir neovim/binaries
+  - mkdir -p neovim/binaries
   - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
      Installing neovim binaries, update links as new releases come out]
   - chmod u+x nvim.appimage
@@ -16,8 +16,12 @@
   - mv nvim-macos.tar.gz neovim/binaries/
   - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
   - ./neovim/install_binaries.sh
-  - [nvim +PlugInstall +qall, Installing neovim plugins]
-  # - [nvim -c 'CocInstall -sync coc-json coc-html coc-solargraph|q', Install coc extensions]
+  - which nvim
+  # - command: nvim +slient +VimEnter +PlugInstall +qall Can't get autoinstall wokring
+  #   stdin: true
+  #   stdout: true
+  #   stderr: true
+  #   description: d it
 
 - link:
    ~/.config/nvim/init.vim: neovim/init.vim
