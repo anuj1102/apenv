@@ -1,2 +1,9 @@
 - shell:
-   - echo "hi2"
+  - [echo "", Checking dependencies exist, install using local package manager]
+  - command -v zsh
+  - command -v pip3
+  - command -v curl
+  - command -v node
+  - command -v yarn
+  - [command -v solargraph, Run './install-standalone rubyenv' if not found]
+  - [command -v foo, Run './install-standalone foo' if not found]

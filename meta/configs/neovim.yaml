@@ -1,0 +1,21 @@
+# Neovim binaries installed from github
+#
+- shell:
+  - rm -rf neovim/binaries
+  - mkdir neovim/binaries
+  - [wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage,
+     Installing neovim binaries, update links as new releases come out]
+  - chmod u+x nvim.appimage
+  - mv nvim.appimage neovim/binaries/
+  - cd neovim/binaries && ./nvim.appimage --appimage-extract
+  - wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-macos.tar.gz
+  - mv nvim-macos.tar.gz neovim/binaries/
+  - cd neovim/binaries && tar -xvzf nvim-macos.tar.gz
+  - ./neovim/install_binaries.sh
+
+- link:
+   # ~/.zshrc: zsh/zshrc
+   # ~/.p10k.zsh: zsh/p10k.zsh
+   ~/.config/nvim/init.vim: neovim/init.vim
+   ~/.config/nvim/coc.vim: neovim/coc.vim
+   ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
