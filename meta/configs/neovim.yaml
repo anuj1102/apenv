@@ -27,4 +27,4 @@
    ~/.config/nvim/init.vim: neovim/init.vim
    ~/.config/nvim/coc.vim: neovim/coc.vim
    ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
-   ~/.config/nvim/ccls: neovim/ccls.vim
+   ~/.config/nvim/ccls.vim: neovim/ccls.vim
