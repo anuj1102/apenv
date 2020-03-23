@@ -1,3 +1,8 @@
+zmodload zsh/zprof # Debug load time with zprof
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 export ZPLUG_HOME=$HOME/.zplug
 
 # Check if zplug is installed
@@ -15,21 +20,23 @@ source $HOME/.zplug/init.zsh
 # Base packages
 zplug "plugins/git", from:oh-my-zsh
 zplug "popstas/zsh-command-time"
-zplug "zsh-users/zsh-completions", defer:0
+zplug "zsh-users/zsh-completions", defer:2
 zplug "zsh-users/zsh-syntax-highlighting", defer:3, on:"zsh-users/zsh-autosuggestions"
-zplug "MichaelAquilina/zsh-you-should-use"
+zplug "MichaelAquilina/zsh-you-should-use", defer:1
 
 # Theme
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-PURE_CMD_MAX_EXEC_TIME=3
-zstyle ':prompt:pure:prompt:success' color cyan
+# Use pure theme if p10k fonts are not supported
+# zplug mafredri/zsh-async, from:github
+# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+# PURE_CMD_MAX_EXEC_TIME=3
+# zstyle ':prompt:pure:prompt:success' color cyan
+zplug romkatv/powerlevel10k, as:theme, depth:1
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Autosuggest plugin
-zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions", defer:3, on:"zsh-users/zsh-completions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_COMPLETION_IGNORE="make *"
+ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # fzf
 zplug 'junegunn/fzf', \
@@ -51,7 +58,7 @@ export ENHANCD_DISABLE_DOT=1
 # maintained anymore
 zplug "martanne/abduco", \
        from:github, as:command, \
-       hook-build:'./configure --prefix=~/.zplug && make && make install'
+       hook-build:'./configure --prefix=~/.zplug && make && make install', defer:3
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
