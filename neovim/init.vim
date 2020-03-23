@@ -33,6 +33,10 @@ Plug 'vim-scripts/bufkill.vim'
 Plug 'mtahmed/click.vim'
 Plug 'janko-m/vim-test'
 
+"Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -69,6 +73,10 @@ call SourceIfExists("~/.config/nvim/local.vim")
 call SourceIfExists("~/.config/nvim/coc.vim")
 call SourceIfExists("~/.config/nvim/ccls.vim")
 
+" Prevent ultisnips from overriding coc tab mapping
+let g:UltiSnipsExpandTrigger = "<nop>"
+
+
 set mouse=a
 set tabstop=2
 set softtabstop=0 noexpandtab
@@ -81,6 +89,7 @@ set number
 set relativenumber
 set hidden " Allows buffers to be hidden if modifies
 set shell=/bin/zsh " Set default shell
+
 
 "Highlight 80th column
 set cc=80
@@ -111,7 +120,7 @@ function! QuitBuffer()
 	if &buftype == 'terminal'
 		:BD!
 	else
-		:BD
+		:bdelete
 	endif
 endfunction
 

@@ -29,6 +29,7 @@ zstyle ':prompt:pure:prompt:success' color cyan
 zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="make *"
 
 # fzf
 zplug 'junegunn/fzf', \
