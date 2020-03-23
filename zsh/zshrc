@@ -113,4 +113,5 @@ bindkey '^k' clear-ls
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
+export PATH=/snap/bin:$PATH
 export PATH=~/.local/bin:$PATH
