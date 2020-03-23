@@ -67,6 +67,7 @@ endfunction
 " Local neovim configs
 call SourceIfExists("~/.config/nvim/local.vim")
 call SourceIfExists("~/.config/nvim/coc.vim")
+call SourceIfExists("~/.config/nvim/ccls.vim")
 
 set mouse=a
 set tabstop=2
