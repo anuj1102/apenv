@@ -86,6 +86,12 @@ function nmux() {
     abduco -A $1 nvim -c :terminal
 }
 
+# Reconnect ssh-agent
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+
 # https://superuser.com/questions/458906/zsh-tab-completion-of-git-commands-is-very-slow-how-can-i-turn-it-off
 __git_files () {
     _wanted files expl 'local files' _files
@@ -100,26 +106,12 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# Reconnect ssh-agent
-if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
-    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
 fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
-alias ls="ls --color=tty"
-alias gg="git grep"
-
-# cmd-k to clear screen
-function clear-ls() {
-  clear
-  ls
-  zle && zle .reset-prompt && zle -R
-}
-
-zle -N clear-ls
-bindkey '^k' clear-ls
-bindkey "^A" vi-beginning-of-line
-bindkey "^E" vi-end-of-line
-
+###############################################################################
+#                                Path
+###############################################################################
 export PATH=/snap/bin:$PATH
 export PATH=~/.local/bin:$PATH

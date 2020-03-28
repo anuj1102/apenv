@@ -1,4 +1,5 @@
 - link:
+   ~/.zsh_aliases: zsh/zsh_aliases
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
 

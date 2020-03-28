@@ -1,0 +1,18 @@
+alias ls="ls --color=tty"
+alias gg="git grep"
+
+# cmd-k to clear screen
+function clear-ls() {
+  clear
+  ls
+  zle && zle .reset-prompt && zle -R
+}
+
+zle -N clear-ls
+bindkey '^k' clear-ls
+bindkey "^A" vi-beginning-of-line
+bindkey "^E" vi-end-of-line
+
+alias ts='tmux new -s'
+alias tr='tmux a -t'
+alias tls='tmux ls'
