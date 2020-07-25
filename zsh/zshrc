@@ -27,7 +27,7 @@ zplug "MichaelAquilina/zsh-you-should-use", defer:1
 # Theme
 # Use pure theme if p10k fonts are not supported
 # Currently this is only jessie
-if lsb_release -a | grep jessie ; then
+if lsb_release -a 2>&1 | grep jessie ; then
   zplug mafredri/zsh-async, from:github
   zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
   PURE_CMD_MAX_EXEC_TIME=3
