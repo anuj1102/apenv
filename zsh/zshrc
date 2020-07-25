@@ -26,12 +26,16 @@ zplug "MichaelAquilina/zsh-you-should-use", defer:1
 
 # Theme
 # Use pure theme if p10k fonts are not supported
-# zplug mafredri/zsh-async, from:github
-# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-# PURE_CMD_MAX_EXEC_TIME=3
-# zstyle ':prompt:pure:prompt:success' color cyan
-zplug romkatv/powerlevel10k, as:theme, depth:1
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Currently this is only jessie
+if lsb_release -a | grep jessie ; then
+  zplug mafredri/zsh-async, from:github
+  zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+  PURE_CMD_MAX_EXEC_TIME=3
+  zstyle ':prompt:pure:prompt:success' color cyan
+else
+  zplug romkatv/powerlevel10k, as:theme, depth:1
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
 
 # Autosuggest plugin
 zplug "zsh-users/zsh-autosuggestions", defer:3, on:"zsh-users/zsh-completions"
