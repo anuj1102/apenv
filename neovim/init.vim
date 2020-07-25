@@ -34,7 +34,7 @@ Plug 'mtahmed/click.vim'
 Plug 'janko-m/vim-test'
 
 "Snippets
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Search
