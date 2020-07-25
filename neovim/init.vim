@@ -211,6 +211,12 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
 " let g:ale_ruby_rubocop_executable = 'bundle'
 
+" --------------------------neovim-remote--------------------------
+if has('nvim')
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+endif
+autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+
 "=============================================================================
 " -------------------------- Advanced Configuration---------------------------
 "=============================================================================
