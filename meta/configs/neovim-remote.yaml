@@ -1,2 +1,2 @@
 - shell:
-  - [pip3 install --user neovim-remote, Install neovim-remote]
+  - [pip3 install --user neovim-remote, Install neovim-remote, try installing from zip if this fails https://github.com/mhinz/neovim-remote/blob/master/INSTALLATION.md ]
