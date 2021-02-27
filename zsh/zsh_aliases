@@ -1,6 +1,11 @@
 alias ls="ls --color=tty"
 alias gg="git grep"
 
+# Newer Macs install nvr to the existing python site
+if [[ $OSTYPE == "darwin"* ]]; then
+  alias nvr="~/Library/Python/3.8/bin/nvr"
+fi
+
 # cmd-k to clear screen
 function clear-ls() {
   clear
