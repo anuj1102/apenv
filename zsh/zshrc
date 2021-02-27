@@ -117,5 +117,12 @@ fi
 ###############################################################################
 #                                Path
 ###############################################################################
+#
+# On mac, install coreutils with homebrew and use utils like 'ls' with that
+if [[ $OSTYPE == "darwin"* ]]; then
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+fi
+
 export PATH=/snap/bin:$PATH
 export PATH=~/.local/bin:$PATH
